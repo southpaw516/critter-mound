@@ -36,6 +36,7 @@
             <li class="army" data-bind="css: { battle: inBattle}"><a href="#tabs-barracks" title="">Soldiers (<span data-bind="text: armyMound().length"></span>/<span data-bind="text: maxArmyMoundSize()"></span>)</a></li>
             <li class="achievement"><a href="#tabs-achievements" title="">Achievements (<span data-bind="text: achievementsUnlocked()"></span>/<span data-bind="text: achievements().length"></span>)</a></li>
             <li><a href="#tabs-information" title="">How To Play</a></li>
+			<li><a href="#tabs-automation" title="">Automation</a></li>
         </ul>
 
         <div class="tabcontents">
@@ -715,6 +716,39 @@
                                 </ul>
 
                             </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="tabs-automation" class="tab" style="display:none">
+                <table cellspacing="10">
+                    <tr>
+                        <td style="width: 50%; padding: 5px; vertical-align: top;">
+                            <h4>Automation</h4>                      
+							<p><strong>Buy Upgrades</strong></p>
+							<div>
+							    <input type="checkbox" id="chkHatchery" name="upgrades" value="chkHatchery"/>
+							    <label for="chkHatchery">Hatchery</label>
+							</div>
+							<div>
+							    <input type="checkbox" id="chkFarm" name="upgrades" value="chkFarm"/>
+							    <label for="chkFarm">Farm</label>
+							</div>
+							<div>
+							    <input type="checkbox" id="chkArmy" name="upgrades" value="chkArmy"/>
+							    <label for="chkArmy">Army</label>
+							</div>      
+                        </td>
+                        <td style="width: 50%; padding: 5px; vertical-align: top;">
+                            <button onclick="Reset()">reset game / delete save</button>
+                            <br /><br />
+                            <button data-bind="click: $root.Save.bind($root), clickBubble: false">save game</button> |
+                            <button onclick="Export()">export game</button>
+                            <button onclick="ShowImport()">import game</button>
+                            <br /><br />
+                            <b>Battle Speed:</b> <span data-bind="text: battleTurnLength() / 20"></span> seconds<br />
+                            <input style="width: 100%" type="range" min="2" max="60" data-bind="value: battleTurnLength">
+                            <br /><br />
                         </td>
                     </tr>
                 </table>
